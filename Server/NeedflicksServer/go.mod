@@ -1,6 +1,6 @@
 module github.com/rao-manish-24/Needflicks/Server/NeedflicksServer
 
-go 1.25.4
+go 1.25.0
 
 require (
 	github.com/gin-contrib/cors v1.7.6
