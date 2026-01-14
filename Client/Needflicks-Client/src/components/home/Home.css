@@ -1,0 +1,285 @@
+/* ============================================
+   Home.css - Netflix-Style Home Page
+   ============================================ */
+
+/* Home Container */
+.nf-home {
+  min-height: calc(100vh - 70px);
+}
+
+/* Hero Banner Section */
+.nf-hero-banner {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 800px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 10%;
+  margin-bottom: -100px;
+  background-size: cover;
+  background-position: center top;
+  overflow: hidden;
+}
+
+.nf-hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(20, 20, 20, 0.9) 0%,
+    rgba(20, 20, 20, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+.nf-hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, var(--nf-black), transparent);
+}
+
+.nf-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  padding: 0 4%;
+}
+
+.nf-hero-logo {
+  max-width: 350px;
+  margin-bottom: 1.5rem;
+}
+
+.nf-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.nf-hero-description {
+  font-size: 1.1rem;
+  color: var(--nf-gray-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.nf-hero-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.nf-hero-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--nf-radius-sm);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-hero-btn.play {
+  background: var(--nf-white);
+  color: var(--nf-black);
+  border: none;
+}
+
+.nf-hero-btn.play:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.nf-hero-btn.info {
+  background: rgba(109, 109, 110, 0.7);
+  color: var(--nf-white);
+  border: none;
+}
+
+.nf-hero-btn.info:hover {
+  background: rgba(109, 109, 110, 0.5);
+}
+
+/* Maturity Rating */
+.nf-maturity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.nf-maturity-rating {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--nf-gray);
+  font-size: 0.85rem;
+  color: var(--nf-gray-light);
+}
+
+/* Content Sections */
+.nf-content-section {
+  position: relative;
+  z-index: 5;
+  padding: 0 4%;
+  margin-bottom: var(--nf-spacing-lg);
+}
+
+.nf-section-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.nf-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--nf-white);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: color var(--nf-transition-fast);
+}
+
+.nf-section-title:hover {
+  color: var(--nf-gray-light);
+}
+
+.nf-explore-all {
+  display: none;
+  color: var(--nf-gray);
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-section-header:hover .nf-explore-all {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--nf-gray-light);
+}
+
+/* Welcome Message (when no movies) */
+.nf-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: var(--nf-spacing-xl);
+}
+
+.nf-welcome-logo {
+  width: 100px;
+  margin-bottom: var(--nf-spacing-lg);
+  animation: nf-pulse 2s ease-in-out infinite;
+}
+
+@keyframes nf-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.nf-welcome h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--nf-spacing-sm);
+  color: var(--nf-white);
+}
+
+.nf-welcome p {
+  color: var(--nf-gray);
+  font-size: 1.2rem;
+  max-width: 500px;
+}
+
+/* Quick Add Row */
+.nf-quick-add {
+  background: var(--nf-dark);
+  border: 2px dashed var(--nf-gray-dark);
+  border-radius: var(--nf-radius-lg);
+  padding: var(--nf-spacing-xl);
+  text-align: center;
+  transition: all var(--nf-transition);
+  cursor: pointer;
+}
+
+.nf-quick-add:hover {
+  border-color: var(--nf-gray);
+  background: var(--nf-card);
+}
+
+.nf-quick-add svg {
+  font-size: 3rem;
+  color: var(--nf-gray-dark);
+  margin-bottom: var(--nf-spacing-sm);
+}
+
+.nf-quick-add p {
+  color: var(--nf-gray);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .nf-hero-banner {
+    height: 60vh;
+    min-height: 400px;
+  }
+  
+  .nf-hero-title {
+    font-size: 2rem;
+  }
+  
+  .nf-hero-description {
+    font-size: 1rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-hero-banner {
+    height: 50vh;
+    min-height: 350px;
+    padding-bottom: 15%;
+  }
+  
+  .nf-hero-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .nf-hero-btn {
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .nf-section-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nf-hero-banner {
+    height: 45vh;
+    min-height: 300px;
+  }
+  
+  .nf-hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .nf-hero-logo {
+    max-width: 200px;
+  }
+}

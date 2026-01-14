@@ -1,0 +1,251 @@
+/* ============================================
+   Login.css - Netflix-Style Login Form
+   ============================================ */
+
+/* Login Page Background */
+.nf-auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.8)
+  ),
+  url('https://assets.nflxext.com/ffe/siteui/vlv3/fb5cb900-0cb6-4728-beb5-579b9af98fdd/web/IN-en-20250106-TRIFECTA-perspective_8c498c85-7e49-4646-8a04-29f5da31f1cb_large.jpg') center/cover no-repeat;
+  padding: 2rem 1rem;
+}
+
+/* Auth Card */
+.nf-auth-card {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: var(--nf-radius-md);
+  padding: 3rem 4rem;
+  box-shadow: var(--nf-shadow-lg);
+}
+
+/* Logo */
+.nf-auth-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.nf-auth-logo img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.nf-auth-logo h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--nf-white);
+  margin-bottom: 0.5rem;
+}
+
+.nf-auth-logo p {
+  color: var(--nf-gray);
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Form Styles */
+.nf-auth-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.nf-auth-form .form-label {
+  display: none; /* Netflix uses floating labels or placeholders */
+}
+
+.nf-auth-form .form-control {
+  background-color: #333 !important;
+  border: none !important;
+  border-radius: var(--nf-radius-sm) !important;
+  padding: 1rem !important;
+  font-size: 1rem !important;
+  color: var(--nf-white) !important;
+  height: auto !important;
+}
+
+.nf-auth-form .form-control:focus {
+  background-color: #454545 !important;
+  border-bottom: 2px solid var(--nf-red) !important;
+}
+
+.nf-auth-form .form-control::placeholder {
+  color: var(--nf-gray) !important;
+}
+
+/* Submit Button */
+.nf-auth-form .btn-submit {
+  width: 100%;
+  background: var(--nf-red) !important;
+  border: none !important;
+  border-radius: var(--nf-radius-sm) !important;
+  padding: 1rem !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--nf-white) !important;
+  margin-top: 1.5rem;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-auth-form .btn-submit:hover:not(:disabled) {
+  background: var(--nf-red-hover) !important;
+  transform: scale(1.01);
+}
+
+.nf-auth-form .btn-submit:disabled {
+  background: var(--nf-red-dark) !important;
+  opacity: 0.7;
+}
+
+/* Loading Spinner in Button */
+.nf-auth-form .spinner-border {
+  width: 1.2rem;
+  height: 1.2rem;
+  border-width: 2px;
+}
+
+/* Error Alert */
+.nf-auth-error {
+  background: rgba(229, 9, 20, 0.15) !important;
+  border: none !important;
+  border-left: 4px solid var(--nf-red) !important;
+  color: #ff8c8c !important;
+  border-radius: var(--nf-radius-sm) !important;
+  padding: 0.75rem 1rem !important;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Links */
+.nf-auth-links {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.nf-auth-links span {
+  color: var(--nf-gray);
+}
+
+.nf-auth-links a {
+  color: var(--nf-white);
+  font-weight: 600;
+  transition: color var(--nf-transition-fast);
+}
+
+.nf-auth-links a:hover {
+  color: var(--nf-red);
+  text-decoration: underline;
+}
+
+/* Remember Me / Help */
+.nf-auth-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--nf-gray);
+}
+
+.nf-auth-options a {
+  color: var(--nf-gray);
+}
+
+.nf-auth-options a:hover {
+  text-decoration: underline;
+}
+
+/* Checkbox Style */
+.nf-auth-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nf-auth-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--nf-red);
+}
+
+/* Divider */
+.nf-auth-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+  color: var(--nf-gray);
+}
+
+.nf-auth-divider::before,
+.nf-auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--nf-gray-dark);
+}
+
+.nf-auth-divider span {
+  padding: 0 1rem;
+  font-size: 0.85rem;
+}
+
+/* Social Login Buttons */
+.nf-social-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.nf-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--nf-radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-social-btn.google {
+  background: var(--nf-white);
+  color: var(--nf-black);
+}
+
+.nf-social-btn.google:hover {
+  background: var(--nf-gray-light);
+}
+
+/* Legal Text */
+.nf-auth-legal {
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
+  color: var(--nf-gray-dark);
+  line-height: 1.5;
+}
+
+.nf-auth-legal a {
+  color: var(--nf-gray);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .nf-auth-card {
+    padding: 2rem 1.5rem;
+    background: rgba(0, 0, 0, 0.85);
+  }
+  
+  .nf-auth-logo h2 {
+    font-size: 1.5rem;
+  }
+}

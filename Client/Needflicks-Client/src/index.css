@@ -1,0 +1,430 @@
+/* Google Fonts Import - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   NEEDFLICKS - Netflix-Inspired Global Styles
+   ============================================ */
+
+/* CSS Custom Properties (Netflix Color Palette) */
+:root {
+  /* Primary Colors */
+  --nf-red: #E50914;
+  --nf-red-hover: #F40612;
+  --nf-red-dark: #B20710;
+  
+  /* Background Colors */
+  --nf-black: #141414;
+  --nf-dark: #181818;
+  --nf-darker: #0D0D0D;
+  --nf-card: #232323;
+  --nf-card-hover: #2a2a2a;
+  
+  /* Text Colors */
+  --nf-white: #FFFFFF;
+  --nf-gray-light: #E5E5E5;
+  --nf-gray: #B3B3B3;
+  --nf-gray-dark: #808080;
+  --nf-gray-darker: #6D6D6D;
+  
+  /* Gradient & Overlay */
+  --nf-gradient: linear-gradient(to bottom, rgba(20, 20, 20, 0) 0%, rgba(20, 20, 20, 0.15) 15%, rgba(20, 20, 20, 0.35) 29%, rgba(20, 20, 20, 0.58) 44%, #141414 68%, #141414 100%);
+  --nf-overlay: rgba(0, 0, 0, 0.7);
+  
+  /* Shadows */
+  --nf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --nf-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --nf-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --nf-shadow-glow: 0 0 20px rgba(229, 9, 20, 0.3);
+  
+  /* Border Radius */
+  --nf-radius-sm: 4px;
+  --nf-radius-md: 6px;
+  --nf-radius-lg: 8px;
+  
+  /* Transitions */
+  --nf-transition-fast: 0.15s ease;
+  --nf-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --nf-transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Typography */
+  --nf-font-primary: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* Spacing */
+  --nf-spacing-xs: 0.5rem;
+  --nf-spacing-sm: 1rem;
+  --nf-spacing-md: 1.5rem;
+  --nf-spacing-lg: 2rem;
+  --nf-spacing-xl: 3rem;
+  
+  /* Z-Index Layers */
+  --nf-z-base: 1;
+  --nf-z-card: 10;
+  --nf-z-card-hover: 20;
+  --nf-z-nav: 100;
+  --nf-z-modal: 1000;
+}
+
+/* Base Reset & Global Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background-color: var(--nf-black);
+  color: var(--nf-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nf-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nf-gray-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nf-gray);
+}
+
+/* Selection */
+::selection {
+  background: var(--nf-red);
+  color: var(--nf-white);
+}
+
+/* Links */
+a {
+  color: var(--nf-white);
+  text-decoration: none;
+  transition: color var(--nf-transition-fast);
+}
+
+a:hover {
+  color: var(--nf-red);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--nf-white);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+/* Paragraphs */
+p {
+  color: var(--nf-gray-light);
+}
+
+/* ============================================
+   Bootstrap Overrides for Netflix Theme
+   ============================================ */
+
+/* Container */
+.container,
+.container-fluid {
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+@media (min-width: 1400px) {
+  .container,
+  .container-fluid {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+/* Buttons - Netflix Style */
+.btn {
+  font-weight: 600;
+  border-radius: var(--nf-radius-sm);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: all var(--nf-transition-fast);
+  border: none;
+}
+
+.btn-primary,
+.btn-danger {
+  background-color: var(--nf-red) !important;
+  border-color: var(--nf-red) !important;
+  color: var(--nf-white) !important;
+}
+
+.btn-primary:hover,
+.btn-danger:hover,
+.btn-primary:focus,
+.btn-danger:focus {
+  background-color: var(--nf-red-hover) !important;
+  border-color: var(--nf-red-hover) !important;
+  transform: scale(1.02);
+  box-shadow: var(--nf-shadow-glow);
+}
+
+.btn-outline-light {
+  border-color: var(--nf-gray) !important;
+  color: var(--nf-white) !important;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--nf-white) !important;
+  color: var(--nf-black) !important;
+}
+
+.btn-outline-info {
+  border-color: var(--nf-gray) !important;
+  color: var(--nf-white) !important;
+  background: transparent !important;
+}
+
+.btn-outline-info:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--nf-white) !important;
+  color: var(--nf-white) !important;
+}
+
+.btn-info {
+  background-color: var(--nf-red) !important;
+  border-color: var(--nf-red) !important;
+  color: var(--nf-white) !important;
+}
+
+.btn-info:hover {
+  background-color: var(--nf-red-hover) !important;
+}
+
+/* Form Controls - Netflix Style */
+.form-control,
+.form-select {
+  background-color: #333 !important;
+  border: 1px solid #444 !important;
+  border-radius: var(--nf-radius-sm) !important;
+  color: var(--nf-white) !important;
+  padding: 0.875rem 1rem !important;
+  font-size: 1rem !important;
+  transition: all var(--nf-transition-fast);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #454545 !important;
+  border-color: var(--nf-white) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
+  outline: none !important;
+}
+
+.form-control::placeholder {
+  color: var(--nf-gray-dark) !important;
+}
+
+.form-label {
+  color: var(--nf-gray) !important;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-text {
+  color: var(--nf-gray-dark) !important;
+}
+
+/* Alerts */
+.alert {
+  border-radius: var(--nf-radius-sm);
+  border: none;
+  font-weight: 500;
+}
+
+.alert-danger {
+  background-color: rgba(229, 9, 20, 0.15);
+  color: #ff6b6b;
+  border-left: 4px solid var(--nf-red);
+}
+
+.alert-info {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--nf-gray-light);
+  border-left: 4px solid var(--nf-gray);
+}
+
+/* Cards - Netflix Style */
+.card {
+  background-color: var(--nf-card) !important;
+  border: none !important;
+  border-radius: var(--nf-radius-md) !important;
+  overflow: hidden;
+}
+
+.card-body {
+  background-color: transparent !important;
+}
+
+.card-title {
+  color: var(--nf-white) !important;
+}
+
+.card-text {
+  color: var(--nf-gray) !important;
+}
+
+/* Badges */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: var(--nf-radius-sm);
+}
+
+.badge.bg-dark {
+  background-color: rgba(229, 9, 20, 0.9) !important;
+  color: var(--nf-white) !important;
+}
+
+/* Navbar - Will be further styled in Header.css */
+.navbar {
+  padding: 0.5rem 4% !important;
+}
+
+/* Spinner */
+.spinner-border {
+  color: var(--nf-red) !important;
+}
+
+/* Shadow classes override */
+.shadow,
+.shadow-sm {
+  box-shadow: var(--nf-shadow-md) !important;
+}
+
+/* Background overrides */
+.bg-white {
+  background-color: var(--nf-card) !important;
+}
+
+.bg-light {
+  background-color: var(--nf-dark) !important;
+}
+
+.bg-dark {
+  background-color: var(--nf-darker) !important;
+}
+
+/* Text overrides */
+.text-muted {
+  color: var(--nf-gray) !important;
+}
+
+.text-light {
+  color: var(--nf-gray-light) !important;
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+.nf-text-red {
+  color: var(--nf-red) !important;
+}
+
+.nf-bg-gradient {
+  background: var(--nf-gradient);
+}
+
+.nf-glass {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nf-hover-scale {
+  transition: transform var(--nf-transition);
+}
+
+.nf-hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Page Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nf-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Netflix Loading Bar */
+@keyframes loadingBar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.nf-loading-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--nf-red), transparent);
+  animation: loadingBar 1.5s infinite;
+  z-index: var(--nf-z-modal);
+}
+
+/* Hide Bootstrap's default focus outline */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+  box-shadow: none;
+}

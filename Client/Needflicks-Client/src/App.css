@@ -1,0 +1,175 @@
+/* ============================================
+   App.css - Main Application Styles
+   ============================================ */
+
+/* Main App Container */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Main Content Area */
+main {
+  flex: 1;
+  padding-top: 70px; /* Account for fixed navbar */
+  min-height: calc(100vh - 70px);
+}
+
+/* Page Sections */
+.nf-section {
+  padding: var(--nf-spacing-lg) 0;
+}
+
+.nf-section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: var(--nf-spacing-md);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nf-section-title::after {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 6px solid var(--nf-red);
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  opacity: 0;
+  transition: all var(--nf-transition);
+}
+
+.nf-section-title:hover::after {
+  opacity: 1;
+  margin-left: 0.5rem;
+}
+
+/* Hero Section (for future enhancement) */
+.nf-hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 10%;
+  background-size: cover;
+  background-position: center top;
+}
+
+.nf-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    var(--nf-black) 0%,
+    rgba(20, 20, 20, 0.7) 50%,
+    rgba(20, 20, 20, 0.4) 100%
+  );
+}
+
+.nf-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.nf-hero-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.nf-hero-description {
+  font-size: 1.1rem;
+  color: var(--nf-gray-light);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Content Rows */
+.nf-content-row {
+  position: relative;
+  margin-bottom: var(--nf-spacing-xl);
+}
+
+/* Empty State */
+.nf-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  color: var(--nf-gray);
+}
+
+.nf-empty-state h2 {
+  color: var(--nf-gray);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+/* Footer Placeholder */
+.nf-footer {
+  background-color: var(--nf-darker);
+  padding: var(--nf-spacing-xl) 0;
+  margin-top: auto;
+}
+
+.nf-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.nf-footer-link {
+  color: var(--nf-gray);
+  font-size: 0.85rem;
+}
+
+.nf-footer-link:hover {
+  text-decoration: underline;
+}
+
+.nf-footer-text {
+  color: var(--nf-gray-dark);
+  font-size: 0.75rem;
+}
+
+/* Page Transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  main {
+    padding-top: 60px;
+  }
+  
+  .nf-section {
+    padding: var(--nf-spacing-md) 0;
+  }
+}

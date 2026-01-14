@@ -1,0 +1,283 @@
+/* ============================================
+   Recommended.css - Netflix-Style Recommendations
+   ============================================ */
+
+/* Recommended Page Container */
+.nf-recommended-page {
+  min-height: calc(100vh - 70px);
+  padding-top: var(--nf-spacing-lg);
+}
+
+/* Page Header */
+.nf-recommended-header {
+  padding: 0 4%;
+  margin-bottom: var(--nf-spacing-lg);
+}
+
+.nf-recommended-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--nf-white);
+  margin-bottom: 0.5rem;
+}
+
+.nf-recommended-subtitle {
+  color: var(--nf-gray);
+  font-size: 1rem;
+}
+
+/* Personalized Banner */
+.nf-personalized-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 9, 20, 0.2) 0%,
+    rgba(20, 20, 20, 0.9) 100%
+  );
+  border-radius: var(--nf-radius-lg);
+  padding: var(--nf-spacing-lg);
+  margin: 0 4% var(--nf-spacing-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--nf-spacing-lg);
+}
+
+.nf-personalized-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--nf-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nf-personalized-icon svg {
+  font-size: 2rem;
+  color: var(--nf-white);
+}
+
+.nf-personalized-content h3 {
+  font-size: 1.25rem;
+  color: var(--nf-white);
+  margin-bottom: 0.25rem;
+}
+
+.nf-personalized-content p {
+  color: var(--nf-gray);
+  font-size: 0.95rem;
+}
+
+/* Match Percentage Display */
+.nf-match-display {
+  margin-left: auto;
+  text-align: center;
+}
+
+.nf-match-score {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #46d369;
+  line-height: 1;
+}
+
+.nf-match-label {
+  color: var(--nf-gray);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Genre Tags */
+.nf-genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 4% var(--nf-spacing-md);
+}
+
+.nf-genre-tag {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--nf-gray-light);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-genre-tag:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--nf-white);
+  color: var(--nf-white);
+}
+
+.nf-genre-tag.active {
+  background: var(--nf-red);
+  border-color: var(--nf-red);
+  color: var(--nf-white);
+}
+
+/* Recommendation Sections */
+.nf-rec-section {
+  margin-bottom: var(--nf-spacing-xl);
+}
+
+.nf-rec-section-header {
+  padding: 0 4%;
+  margin-bottom: var(--nf-spacing-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nf-rec-section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--nf-white);
+}
+
+.nf-rec-badge {
+  background: var(--nf-red);
+  color: var(--nf-white);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--nf-radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Because You Watched */
+.nf-because-watched {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 4%;
+  margin-bottom: var(--nf-spacing-sm);
+}
+
+.nf-watched-poster {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: var(--nf-radius-sm);
+}
+
+.nf-because-title {
+  font-size: 1.2rem;
+  color: var(--nf-white);
+}
+
+.nf-because-title span {
+  color: var(--nf-gray);
+}
+
+/* Top Picks For You */
+.nf-top-picks-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ffd700, #ff8c00);
+  color: var(--nf-black);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--nf-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Empty Recommendations */
+.nf-no-recommendations {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: var(--nf-spacing-xl);
+}
+
+.nf-no-rec-icon {
+  font-size: 4rem;
+  color: var(--nf-gray-dark);
+  margin-bottom: var(--nf-spacing-md);
+}
+
+.nf-no-recommendations h3 {
+  color: var(--nf-white);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.nf-no-recommendations p {
+  color: var(--nf-gray);
+  max-width: 400px;
+  margin-bottom: var(--nf-spacing-lg);
+}
+
+.nf-browse-btn {
+  background: var(--nf-white);
+  color: var(--nf-black);
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: var(--nf-radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-browse-btn:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.02);
+}
+
+/* Refresh Recommendations */
+.nf-refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--nf-gray);
+  color: var(--nf-gray-light);
+  padding: 0.5rem 1rem;
+  border-radius: var(--nf-radius-sm);
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+  margin-left: auto;
+}
+
+.nf-refresh-btn:hover {
+  border-color: var(--nf-white);
+  color: var(--nf-white);
+}
+
+.nf-refresh-btn.refreshing svg {
+  animation: nf-spin 1s linear infinite;
+}
+
+@keyframes nf-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nf-personalized-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--nf-spacing-md);
+  }
+  
+  .nf-match-display {
+    margin-left: 0;
+    margin-top: var(--nf-spacing-sm);
+  }
+  
+  .nf-recommended-title {
+    font-size: 1.5rem;
+  }
+  
+  .nf-rec-section-title {
+    font-size: 1.2rem;
+  }
+}

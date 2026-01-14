@@ -1,0 +1,229 @@
+/* ============================================
+   Spinner.css - Netflix-Style Loading Animation
+   ============================================ */
+
+/* Loading Container */
+.nf-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1.5rem;
+}
+
+/* Netflix-Style Spinner */
+.nf-spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+/* Outer Ring */
+.nf-spinner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 4px solid transparent;
+  border-top-color: var(--nf-red);
+  border-radius: 50%;
+  animation: nf-spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+/* Inner Ring */
+.nf-spinner::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 3px solid transparent;
+  border-top-color: var(--nf-white);
+  border-radius: 50%;
+  animation: nf-spin 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite reverse;
+}
+
+@keyframes nf-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Alternative: Pulsing Logo */
+.nf-logo-pulse {
+  width: 60px;
+  height: 60px;
+  animation: nf-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes nf-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+}
+
+/* Loading Text */
+.nf-loading-text {
+  color: var(--nf-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Skeleton Loader (alternative) */
+.nf-skeleton-loader {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem 4%;
+}
+
+.nf-skeleton-card {
+  background: linear-gradient(
+    90deg,
+    var(--nf-card) 0%,
+    var(--nf-card-hover) 50%,
+    var(--nf-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: nf-skeleton-shimmer 1.5s infinite;
+  border-radius: var(--nf-radius-md);
+  height: 280px;
+}
+
+@keyframes nf-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Progress Bar Loading */
+.nf-progress-loading {
+  position: fixed;
+  top: 68px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  z-index: 9998;
+}
+
+.nf-progress-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--nf-red), transparent);
+  animation: nf-progress-slide 1.5s infinite;
+}
+
+@keyframes nf-progress-slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+/* Dots Loading */
+.nf-dots-loader {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nf-dots-loader span {
+  width: 12px;
+  height: 12px;
+  background: var(--nf-red);
+  border-radius: 50%;
+  animation: nf-dots-bounce 1.4s infinite ease-in-out both;
+}
+
+.nf-dots-loader span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.nf-dots-loader span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes nf-dots-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+/* Page Transition Loading */
+.nf-page-loading {
+  position: fixed;
+  inset: 0;
+  background: var(--nf-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity var(--nf-transition);
+}
+
+.nf-page-loading.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Inline Spinner (for buttons) */
+.nf-inline-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: nf-spin 0.8s linear infinite;
+}
+
+/* Small Spinner */
+.nf-spinner-sm {
+  width: 40px;
+  height: 40px;
+}
+
+.nf-spinner-sm::before {
+  border-width: 3px;
+}
+
+.nf-spinner-sm::after {
+  inset: 8px;
+  border-width: 2px;
+}
+
+/* Large Spinner */
+.nf-spinner-lg {
+  width: 120px;
+  height: 120px;
+}
+
+.nf-spinner-lg::before {
+  border-width: 5px;
+}
+
+.nf-spinner-lg::after {
+  inset: 16px;
+  border-width: 4px;
+}

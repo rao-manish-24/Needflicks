@@ -1,0 +1,365 @@
+/* ============================================
+   StreamMovie.css - Netflix-Style Video Player
+   ============================================ */
+
+/* Player Container */
+.react-player-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  z-index: 9999;
+}
+
+/* React Player Wrapper */
+.react-player-container > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Video Element Styling */
+.react-player-container video {
+  object-fit: contain;
+}
+
+/* YouTube Embed Adjustments */
+.react-player-container iframe {
+  border: none;
+}
+
+/* Back Button (overlay) */
+.nf-player-back {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--nf-white);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: var(--nf-radius-sm);
+  opacity: 0;
+  transition: opacity var(--nf-transition), background var(--nf-transition-fast);
+}
+
+.react-player-container:hover .nf-player-back {
+  opacity: 1;
+}
+
+.nf-player-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nf-player-back svg {
+  font-size: 1.5rem;
+}
+
+/* Title Overlay */
+.nf-player-title {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  color: var(--nf-white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity var(--nf-transition);
+}
+
+.react-player-container:hover .nf-player-title {
+  opacity: 1;
+}
+
+/* Custom Controls Container */
+.nf-player-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--nf-transition);
+}
+
+.react-player-container:hover .nf-player-controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progress Bar */
+.nf-progress-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: height var(--nf-transition-fast);
+}
+
+.nf-progress-bar:hover {
+  height: 6px;
+}
+
+.nf-progress-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--nf-red);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.nf-progress-buffer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+}
+
+.nf-progress-handle {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: var(--nf-red);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--nf-transition-fast);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.nf-progress-bar:hover .nf-progress-handle {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Control Buttons */
+.nf-control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nf-control-btn {
+  background: transparent;
+  border: none;
+  color: var(--nf-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: transform var(--nf-transition-fast);
+}
+
+.nf-control-btn:hover {
+  transform: scale(1.2);
+}
+
+.nf-control-btn.play-pause {
+  font-size: 2rem;
+}
+
+/* Volume Control */
+.nf-volume-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nf-volume-slider {
+  width: 0;
+  opacity: 0;
+  transition: all var(--nf-transition);
+}
+
+.nf-volume-control:hover .nf-volume-slider {
+  width: 80px;
+  opacity: 1;
+}
+
+.nf-volume-slider input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.nf-volume-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--nf-white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Time Display */
+.nf-time-display {
+  color: var(--nf-white);
+  font-size: 0.9rem;
+  font-family: 'Courier New', monospace;
+}
+
+/* Right Controls */
+.nf-right-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Fullscreen Button */
+.nf-fullscreen-btn {
+  font-size: 1.25rem;
+}
+
+/* Skip Buttons */
+.nf-skip-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--nf-white);
+  border-radius: var(--nf-radius-sm);
+  color: var(--nf-white);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-skip-btn:hover {
+  background: var(--nf-white);
+  color: var(--nf-black);
+}
+
+/* Episode Info Panel */
+.nf-episode-info {
+  position: fixed;
+  top: 50%;
+  right: -350px;
+  transform: translateY(-50%);
+  width: 320px;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: var(--nf-radius-md) 0 0 var(--nf-radius-md);
+  padding: 1.5rem;
+  z-index: 10000;
+  transition: right var(--nf-transition);
+}
+
+.nf-episode-info.visible {
+  right: 0;
+}
+
+.nf-episode-thumbnail {
+  width: 100%;
+  border-radius: var(--nf-radius-sm);
+  margin-bottom: 1rem;
+}
+
+.nf-episode-title {
+  color: var(--nf-white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.nf-episode-duration {
+  color: var(--nf-gray);
+  font-size: 0.85rem;
+}
+
+.nf-episode-description {
+  color: var(--nf-gray-light);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+/* Loading Overlay */
+.nf-player-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10001;
+}
+
+.nf-player-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid transparent;
+  border-top: 4px solid var(--nf-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .nf-player-back {
+    top: 10px;
+    left: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .nf-player-controls {
+    padding: 1rem;
+  }
+  
+  .nf-control-btn {
+    font-size: 1.25rem;
+  }
+  
+  .nf-control-btn.play-pause {
+    font-size: 1.5rem;
+  }
+  
+  .nf-volume-control {
+    display: none;
+  }
+}
+
+/* Hide cursor when not interacting */
+.react-player-container.hide-cursor {
+  cursor: none;
+}
+
+.react-player-container.hide-cursor .nf-player-back,
+.react-player-container.hide-cursor .nf-player-title,
+.react-player-container.hide-cursor .nf-player-controls {
+  opacity: 0;
+  pointer-events: none;
+}

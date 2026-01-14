@@ -1,0 +1,301 @@
+/* ============================================
+   Review.css - Netflix-Style Review Page
+   ============================================ */
+
+/* Review Page Container */
+.nf-review-page {
+  padding: var(--nf-spacing-xl) 0;
+  min-height: calc(100vh - 70px);
+}
+
+/* Page Title */
+.nf-review-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: var(--nf-spacing-xl);
+  color: var(--nf-white);
+}
+
+.nf-review-title span {
+  color: var(--nf-red);
+}
+
+/* Review Layout */
+.nf-review-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--nf-spacing-xl);
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .nf-review-layout {
+    grid-template-columns: 1fr;
+    gap: var(--nf-spacing-lg);
+  }
+}
+
+/* Movie Preview Card */
+.nf-review-movie-card {
+  background: var(--nf-card);
+  border-radius: var(--nf-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--nf-shadow-lg);
+  position: sticky;
+  top: 90px;
+}
+
+@media (max-width: 992px) {
+  .nf-review-movie-card {
+    position: static;
+  }
+}
+
+/* Review Form Container */
+.nf-review-form-container {
+  background: var(--nf-dark);
+  border-radius: var(--nf-radius-lg);
+  padding: var(--nf-spacing-lg);
+  box-shadow: var(--nf-shadow-md);
+}
+
+/* Form Header */
+.nf-review-form-header {
+  margin-bottom: var(--nf-spacing-md);
+  padding-bottom: var(--nf-spacing-sm);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nf-review-form-header h3 {
+  color: var(--nf-white);
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nf-review-form-header h3 svg {
+  color: var(--nf-red);
+}
+
+/* Review Textarea */
+.nf-review-textarea {
+  background: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: var(--nf-radius-md) !important;
+  color: var(--nf-white) !important;
+  padding: 1rem !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  min-height: 200px !important;
+  resize: vertical !important;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-review-textarea:focus {
+  background: #333 !important;
+  border-color: var(--nf-red) !important;
+  box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.15) !important;
+}
+
+.nf-review-textarea::placeholder {
+  color: var(--nf-gray-dark) !important;
+}
+
+/* Submit Button */
+.nf-review-submit {
+  background: var(--nf-red) !important;
+  border: none !important;
+  border-radius: var(--nf-radius-sm) !important;
+  padding: 0.75rem 2rem !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  color: var(--nf-white) !important;
+  transition: all var(--nf-transition-fast);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nf-review-submit:hover:not(:disabled) {
+  background: var(--nf-red-hover) !important;
+  transform: scale(1.02);
+  box-shadow: var(--nf-shadow-glow);
+}
+
+.nf-review-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Read-only Review Display */
+.nf-review-display {
+  background: #2a2a2a;
+  border-radius: var(--nf-radius-md);
+  padding: 1.5rem;
+  color: var(--nf-gray-light);
+  line-height: 1.8;
+  font-size: 1rem;
+  border-left: 4px solid var(--nf-red);
+}
+
+.nf-review-display:empty::before {
+  content: 'No review available yet.';
+  color: var(--nf-gray-dark);
+  font-style: italic;
+}
+
+/* Review Meta Info */
+.nf-review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--nf-spacing-md);
+  padding-top: var(--nf-spacing-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--nf-gray-dark);
+  font-size: 0.85rem;
+}
+
+.nf-review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nf-review-author img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* Rating Stars (for future) */
+.nf-rating-stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: var(--nf-spacing-md);
+}
+
+.nf-star {
+  font-size: 1.5rem;
+  color: var(--nf-gray-dark);
+  cursor: pointer;
+  transition: all var(--nf-transition-fast);
+}
+
+.nf-star.active,
+.nf-star:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+
+/* Character Count */
+.nf-char-count {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--nf-gray-dark);
+  margin-top: 0.5rem;
+}
+
+.nf-char-count.warning {
+  color: #ffc107;
+}
+
+.nf-char-count.limit {
+  color: #ff4444;
+}
+
+/* Admin Badge */
+.nf-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--nf-red) 0%, var(--nf-red-dark) 100%);
+  color: var(--nf-white);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--nf-radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Success Toast (after submit) */
+.nf-review-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #00c853;
+  color: var(--nf-white);
+  padding: 1rem 1.5rem;
+  border-radius: var(--nf-radius-md);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--nf-shadow-lg);
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all var(--nf-transition);
+  z-index: 1000;
+}
+
+.nf-review-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.nf-review-toast svg {
+  font-size: 1.25rem;
+}
+
+/* No Permission Message */
+.nf-no-permission {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed var(--nf-gray-dark);
+  border-radius: var(--nf-radius-md);
+  padding: var(--nf-spacing-lg);
+  text-align: center;
+  color: var(--nf-gray);
+}
+
+.nf-no-permission svg {
+  font-size: 2rem;
+  margin-bottom: var(--nf-spacing-sm);
+  color: var(--nf-gray-dark);
+}
+
+/* Movie Info Inside Review Card */
+.nf-review-movie-info {
+  padding: 1.5rem;
+}
+
+.nf-review-movie-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nf-white);
+  margin-bottom: 0.5rem;
+}
+
+.nf-review-movie-meta {
+  display: flex;
+  gap: 1rem;
+  color: var(--nf-gray);
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nf-review-title {
+    font-size: 1.5rem;
+  }
+  
+  .nf-review-form-container {
+    padding: var(--nf-spacing-md);
+  }
+  
+  .nf-review-textarea {
+    min-height: 150px !important;
+  }
+}

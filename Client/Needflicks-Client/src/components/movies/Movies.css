@@ -1,0 +1,255 @@
+/* ============================================
+   Movies.css - Netflix-Style Movie Grid
+   ============================================ */
+
+/* Movies Container */
+.nf-movies-container {
+  padding: var(--nf-spacing-lg) 0;
+  min-height: calc(100vh - 140px);
+}
+
+/* Section Header */
+.nf-movies-header {
+  margin-bottom: var(--nf-spacing-lg);
+}
+
+.nf-movies-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--nf-white);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: color var(--nf-transition-fast);
+}
+
+.nf-movies-title:hover {
+  color: var(--nf-gray-light);
+}
+
+.nf-movies-title svg {
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all var(--nf-transition);
+}
+
+.nf-movies-title:hover svg {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Movie Grid */
+.nf-movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+/* Alternative: Row Style (horizontal scroll) */
+.nf-movie-row {
+  position: relative;
+  margin: 0 -4%;
+  padding: 0 4%;
+}
+
+.nf-movie-row-inner {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 1rem 0;
+}
+
+.nf-movie-row-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.nf-movie-row-item {
+  flex: 0 0 200px;
+  transition: transform var(--nf-transition);
+}
+
+/* Row Navigation Arrows */
+.nf-row-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 55px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 20, 20, 0.5);
+  border: none;
+  color: var(--nf-white);
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--nf-transition);
+  z-index: 10;
+}
+
+.nf-movie-row:hover .nf-row-nav {
+  opacity: 1;
+}
+
+.nf-row-nav:hover {
+  background: rgba(20, 20, 20, 0.8);
+}
+
+.nf-row-nav.prev {
+  left: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.nf-row-nav.next {
+  right: 0;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Empty State */
+.nf-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  padding: var(--nf-spacing-xl);
+}
+
+.nf-empty-icon {
+  font-size: 4rem;
+  color: var(--nf-gray-dark);
+  margin-bottom: var(--nf-spacing-md);
+}
+
+.nf-empty-state h2 {
+  color: var(--nf-gray);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: var(--nf-spacing-sm);
+}
+
+.nf-empty-state p {
+  color: var(--nf-gray-dark);
+  max-width: 400px;
+}
+
+/* Category Tabs */
+.nf-category-tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: var(--nf-spacing-lg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 1rem;
+}
+
+.nf-category-tab {
+  background: none;
+  border: none;
+  color: var(--nf-gray);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: color var(--nf-transition-fast);
+}
+
+.nf-category-tab:hover {
+  color: var(--nf-gray-light);
+}
+
+.nf-category-tab.active {
+  color: var(--nf-white);
+}
+
+.nf-category-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--nf-red);
+}
+
+/* Featured/Top 10 Style */
+.nf-top-10 .nf-movie-row-item {
+  display: flex;
+  align-items: center;
+}
+
+.nf-rank-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 8rem;
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 3px var(--nf-gray);
+  line-height: 1;
+  margin-right: -30px;
+  position: relative;
+  z-index: 0;
+}
+
+/* Loading Skeleton */
+.nf-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--nf-card) 0%,
+    var(--nf-card-hover) 50%,
+    var(--nf-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--nf-radius-md);
+}
+
+.nf-skeleton-card {
+  height: 280px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Grid */
+@media (min-width: 1400px) {
+  .nf-movie-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .nf-movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .nf-movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+  
+  .nf-movies-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nf-movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}

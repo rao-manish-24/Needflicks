@@ -1,0 +1,281 @@
+/* ============================================
+   Movie.css - Netflix-Style Movie Card
+   ============================================ */
+
+/* Movie Card Container */
+.nf-movie-card-wrapper {
+    position: relative;
+    padding: 0.5rem;
+    transition: z-index 0s var(--nf-transition);
+  }
+  
+  .nf-movie-card-wrapper:hover {
+    z-index: var(--nf-z-card-hover);
+    transition-delay: 0s;
+  }
+  
+  /* Movie Card */
+  .movie-card {
+    position: relative;
+    background-color: var(--nf-card) !important;
+    border: none !important;
+    border-radius: var(--nf-radius-md) !important;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--nf-transition);
+    box-shadow: var(--nf-shadow-sm);
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.08);
+    box-shadow: var(--nf-shadow-lg);
+    background-color: var(--nf-card-hover) !important;
+  }
+  
+  /* Movie Poster Container */
+  .nf-poster-container {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .nf-poster-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.4) 30%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity var(--nf-transition);
+    z-index: 1;
+  }
+  
+  .movie-card:hover .nf-poster-container::before {
+    opacity: 1;
+  }
+  
+  /* Movie Poster Image */
+  .movie-card .card-img-top {
+    width: 100%;
+    height: 390px;
+    object-fit: contain;
+    transition: transform var(--nf-transition);
+  }
+  
+  .movie-card:hover .card-img-top {
+    transform: scale(1.05);
+  }
+  
+  /* Play Icon Overlay */
+  .play-icon-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    font-size: 4rem;
+    color: var(--nf-white);
+    opacity: 0;
+    z-index: 3;
+    transition: all var(--nf-transition);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+  }
+  
+  .movie-card:hover .play-icon-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .play-icon-overlay:hover {
+    color: var(--nf-red);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  
+  /* Card Body */
+  .movie-card .card-body {
+    padding: 1rem !important;
+    background: transparent !important;
+  }
+  
+  /* Movie Title */
+  .movie-card .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--nf-white) !important;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Movie ID/Info */
+  .movie-card .card-text {
+    font-size: 0.8rem;
+    color: var(--nf-gray-dark) !important;
+    margin-bottom: 0;
+  }
+  
+  /* Ranking Badge */
+  .nf-ranking-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: linear-gradient(135deg, var(--nf-red) 0%, var(--nf-red-dark) 100%);
+    color: var(--nf-white);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--nf-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(229, 9, 20, 0.4);
+  }
+  
+  /* Alternative placement for badge inside card body */
+  .movie-card .badge.bg-dark {
+    background: linear-gradient(135deg, var(--nf-red) 0%, var(--nf-red-dark) 100%) !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    padding: 0.4rem 0.75rem !important;
+    border-radius: var(--nf-radius-sm) !important;
+  }
+  
+  /* Review Button */
+  .movie-card .btn-outline-info {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: var(--nf-white) !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem !important;
+    transition: all var(--nf-transition-fast);
+    backdrop-filter: blur(4px);
+  }
+  
+  .movie-card .btn-outline-info:hover {
+    background: var(--nf-white) !important;
+    border-color: var(--nf-white) !important;
+    color: var(--nf-black) !important;
+    transform: scale(1.02);
+  }
+  
+  /* Quick Info on Hover */
+  .nf-quick-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all var(--nf-transition);
+    z-index: 2;
+  }
+  
+  .movie-card:hover .nf-quick-info {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .nf-quick-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .nf-quick-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--nf-gray);
+    background: rgba(0, 0, 0, 0.6);
+    color: var(--nf-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--nf-transition-fast);
+  }
+  
+  .nf-quick-btn:hover {
+    border-color: var(--nf-white);
+    background: var(--nf-white);
+    color: var(--nf-black);
+    transform: scale(1.1);
+  }
+  
+  .nf-quick-btn.play-btn {
+    background: var(--nf-white);
+    border-color: var(--nf-white);
+    color: var(--nf-black);
+  }
+  
+  .nf-quick-btn.play-btn:hover {
+    background: var(--nf-gray-light);
+  }
+  
+  /* Match Info */
+  .nf-match-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .nf-match-percentage {
+    color: #46d369;
+    font-weight: 700;
+  }
+  
+  .nf-maturity-rating {
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--nf-gray);
+    font-size: 0.7rem;
+    color: var(--nf-gray-light);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .movie-card .card-img-top {
+      height: 215px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .movie-card:hover {
+      transform: scale(1.03);
+    }
+    
+    .movie-card .card-img-top {
+      height: 180px;
+    }
+    
+    .play-icon-overlay {
+      font-size: 3rem;
+      opacity: 0.8;
+    }
+    
+    .movie-card:hover .play-icon-overlay {
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .movie-card .card-img-top {
+      height: 160px;
+    }
+    
+    .movie-card .card-title {
+      font-size: 0.9rem;
+    }
+  }
+  
