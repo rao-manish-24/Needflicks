@@ -15,8 +15,9 @@ const Home =({updateMovieReview}) => {
             setMessage("");
             try{
                 const response = await axiosClient.get('/movies');
-                setMovies(response.data);
-                if (response.data.length === 0){
+                const movieList = Array.isArray(response.data) ? response.data : [];
+                setMovies(movieList);
+                if (movieList.length === 0){
                     setMessage('There are currently no movies available')
                 }
 

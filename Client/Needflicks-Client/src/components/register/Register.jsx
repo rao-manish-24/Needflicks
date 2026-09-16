@@ -1,5 +1,4 @@
 import { useState, useEffect} from 'react';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axiosClient from '../../api/axiosConfig';
@@ -58,7 +57,7 @@ const Register = () => {
             // Registration successful, redirect to login
             navigate('/login', { replace: true });
         } catch (err) {
-            setError('Registration failed. Please try again.');
+            setError(err.response?.data?.error || 'Registration failed. Please try again.');
         } finally {
             setLoading(false);
         }

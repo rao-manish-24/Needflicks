@@ -17,21 +17,17 @@ import (
 )
 
 func main() {
-	// This is the main function
+	if os.Getenv("RENDER") != "" && os.Getenv("GIN_MODE") == "" {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
-	router := gin.Default()
-
-	router.GET("/hello", func(c *gin.Context) {
-		c.String(200, "Hello, Needflicks!")
-	})
-
-	err := godotenv.Load(".env")
-	if err != nil {
+	if err := godotenv.Load(".env"); err != nil {
 		log.Println("Warning: unable to find .env file")
 	}
 
-	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
+	router := gin.Default()
 
+	allowedOrigins := os.Getenv("ALLOWED_ORIGINS")
 	var origins []string
 	if allowedOrigins != "" {
 		origins = strings.Split(allowedOrigins, ",")
@@ -47,8 +43,7 @@ func main() {
 	config := cors.Config{}
 	config.AllowOrigins = origins
 	config.AllowMethods = []string{"GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"}
-	//config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
-	config.AllowHeaders = []string{"Origin", "Content-Type", "Authorization"}
+	config.AllowHeaders = []string{"Origin", "Content-Type", "Accept", "Authorization"}
 	config.ExposeHeaders = []string{"Content-Length"}
 	config.AllowCredentials = true
 	config.MaxAge = 12 * time.Hour
@@ -56,24 +51,30 @@ func main() {
 	router.Use(cors.New(config))
 	router.Use(gin.Logger())
 
+	router.GET("/hello", func(c *gin.Context) {
+		c.String(200, "Hello, Needflicks!")
+	})
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "ok"})
+	})
+
 	var client *mongo.Client = database.Connect()
-
-	if err := client.Ping(context.Background(), nil); err != nil {
-		log.Fatalf("Failed to reach server: %v", err)
-	}
 	defer func() {
-		err := client.Disconnect(context.Background())
-		if err != nil {
-			log.Fatalf("Failed to disconnect from MongoDB: %v", err)
+		if err := client.Disconnect(context.Background()); err != nil {
+			log.Printf("Failed to disconnect from MongoDB: %v", err)
 		}
-
 	}()
 
 	routes.SetupUnProtectedRoutes(router, client)
 	routes.SetupProtectedRoutes(router, client)
 
-	if err := router.Run(":8080"); err != nil {
-		fmt.Println("Failed to start server", err)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
 
+	log.Printf("Starting server on port %s", port)
+	if err := router.Run(":" + port); err != nil {
+		fmt.Println("Failed to start server", err)
+	}
 }

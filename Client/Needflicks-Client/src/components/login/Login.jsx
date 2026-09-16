@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axiosClient from '../../api/axiosConfig';
@@ -43,7 +42,7 @@ const Login = () => {
 
         } catch (err) {
             console.error(err);
-            setError('Invalid email or password');
+            setError(err.response?.data?.error || 'Invalid email or password');
         } finally {
             setLoading(false);
         }

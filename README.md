@@ -218,6 +218,30 @@ npm run dev
 
 The app will open on `http://localhost:5173`
 
+### Deployment
+
+**Render (API)** — Root Directory: `Server/NeedflicksServer`
+
+Set these environment variables (do **not** wrap values in quotes):
+
+| Variable | Notes |
+|---|---|
+| `MONGODB_URI` | Atlas SRV URI, e.g. `mongodb+srv://user:pass@cluster.mongodb.net/` |
+| `DATABASE_NAME` | `needflicks` |
+| `SECRET_KEY` / `SECRET_REFRESH_KEY` | JWT signing secrets |
+| `ALLOWED_ORIGINS` | `https://needflicks.vercel.app` |
+| `OPENAI_API_KEY` | Required for admin reviews |
+| `GIN_MODE` | `release` |
+| `COOKIE_SECURE` | `true` (set automatically on Render) |
+
+In MongoDB Atlas → Network Access, allow `0.0.0.0/0` so Render can connect.
+
+**Vercel (Client)** — Root Directory: `Client/Needflicks-Client`
+
+| Variable | Notes |
+|---|---|
+| `VITE_API_BASE_URL` | Your Render URL, e.g. `https://needflicks-xxxx.onrender.com` |
+
 ---
 
 ## 📡 API Documentation

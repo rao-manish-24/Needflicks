@@ -1,11 +1,29 @@
-# ========================================
-# Needflicks Project .gitignore
-# ========================================
-
-# ========================================
-# Environment Variables (CRITICAL - SECRETS)
-# ========================================
+# Environment Variables
 .env
-.env.*
+.env.local
+.env.*.local
+!.env.example
 
+# OS
+.DS_Store
+Thumbs.db
 
+# Logs
+*.log
+
+# Built server binaries
+*.exe
+*.dll
+*.so
+*.dylib
+/app
+Server/NeedflicksServer/app
+
+# Go
+Server/NeedflicksServer/vendor/
+
+# Node
+node_modules/
+dist/
+build/
+.vite/
